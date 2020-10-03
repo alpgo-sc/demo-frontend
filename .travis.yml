@@ -17,5 +17,8 @@ before_script:
 script:
   - ng lint
   - npm run build
-  - coscmd config -a $COS_SECRET_ID -s $COS_SECRET_KEY -b $COS_BUCKET_NAME -r $COS_BUCKET_REGION
-  - coscmd upload -r ./dist/demo-frontend/ /
+  - echo $ECS4_SSH_KEY > ecs4.pem
+  - chmod 700 ecs4.pem
+  - tar -czvf build.tar.gz dist/frontend
+  - scp -i ecs4.pem -rf build.tar.gz ubuntu@ecs4.alpgo.cc:/home/ubuntu/demo_build/
+  - ssh -i ecs4.pem ubuntu@ecs4.alpgo.cc 'bash -s' < build.sh $COS_SECRET_ID $COS_SECRET_KEY $COS_BUCKET_NAME $COS_BUCKET_REGION
