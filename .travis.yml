@@ -1,13 +1,21 @@
 language: node_js
 node_js:
-  - '12'
+  - "12"
 dist: trusty
 sudo: required
 branches:
   only:
     - main
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/virtualenv/python2.7.9/lib/python2.7/site-packages
+    - node_modules
 before_script:
+  - sudo pip install coscmd
   - npm install -g @angular/cli
 script:
   - ng lint
   - ng build --prod
+  - coscmd config -a $COS_SECRET_ID -s $COS_SECRET_KEY -b $COS_BUCKET_NAME -r $COS_BUCKET_REGION
+  - coscmd upload -r ./dist/demo-frontend/ /
