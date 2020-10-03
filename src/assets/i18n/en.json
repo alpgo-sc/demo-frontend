@@ -1,0 +1,9 @@
+{
+  "common": {
+    "title": "Demo",
+    "language": {
+      "zh-Hans": "简体中文",
+      "en": "English"
+    }
+  }
+}
