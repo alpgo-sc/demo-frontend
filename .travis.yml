@@ -16,7 +16,7 @@ before_script:
   - npm install -g @angular/cli
 script:
   - ng lint
-  - ng build --prod
+  - npm run build
   - coscmd config -a $COS_SECRET_ID -s $COS_SECRET_KEY -b $COS_BUCKET_NAME -r $COS_BUCKET_REGION
   - coscmd delete -rf /
   - coscmd upload -r ./dist/demo-frontend/ /
