@@ -1,13 +1,21 @@
 language: node_js
 node_js:
-  - '12'
+  - "12"
 dist: trusty
 sudo: required
 branches:
   only:
-    - main
+    - depoly-test
 before_script:
   - npm install -g @angular/cli
 script:
   - ng lint
   - ng build --prod
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/demo-frontend
+  on:
+    branch: depoly-test
