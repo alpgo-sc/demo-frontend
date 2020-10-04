@@ -2,6 +2,16 @@ import { Component } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
 
+interface MenuGroupItem {
+  title: string;
+  icon: string;
+  menuItemList: MenuItem[];
+}
+
+interface MenuItem {
+  label: string;
+  routerLink: string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +23,19 @@ export class AppComponent {
   param = { value: 'world' };
 
   LANGUAGE_LIST = ['en', 'zh-Hans'];
+
+  menuItemGroup: MenuGroupItem[] = [
+    {
+      title: 'Dashboard',
+      icon: 'dashboard',
+      menuItemList: [
+        {
+          label: 'Welcome Demo',
+          routerLink: '/welcome',
+        },
+      ],
+    },
+  ];
 
   constructor(private translate: TranslateService) {}
 

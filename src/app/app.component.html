@@ -19,23 +19,20 @@
       nzMode="inline"
       [nzInlineCollapsed]="isCollapsed"
     >
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+      <li
+        nz-submenu
+        nzOpen
+        [nzTitle]="group.title"
+        [nzIcon]="group.icon"
+        *ngFor="let group of menuItemGroup"
+      >
         <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+          <li
+            nz-menu-item
+            nzMatchRouter
+            *ngFor="let item of group.menuItemList"
+          >
+            <a [routerLink]="item.routerLink">{{ item.label }}</a>
           </li>
         </ul>
       </li>
