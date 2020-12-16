@@ -16,11 +16,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
 import { SharedModule } from './shared/shared.module';
+import { ComponentNameComponent } from './component-name/component-name.component';
 
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ComponentNameComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,5 +34,4 @@ registerLocaleData(zh);
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],
-})
-export class AppModule {}
+})export class AppModule {}
