@@ -21,22 +21,22 @@ export class StudentService {
 
   studentsUrl = '/web/students'
 
-   studentadd = 'web/addstudent'
+  studentadd = 'web/addstudent'
+
+  studeentup = 'web/querystudent'
 
   configUrl = 'assets/config.json';
-
- 
-
-  
 
   getStudents() {
     return this.http.get(this.studentsUrl);
   }
 
-
-
   addStudents (stu: Student): Observable<Student>{
     return this.http.post(this.studentadd, stu, httpOptions)
+  }
+
+  updateHero (stu: Student): Observable<Student> {
+    return this.http.put<Student>(this.studeentup, stu, httpOptions)
   }
 
 }
